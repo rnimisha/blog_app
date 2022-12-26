@@ -1,5 +1,7 @@
 import { createGlobalStyle } from 'styled-components'
 
+import * as palette from '../../constants/palette'
+
 const GlobalStyles = createGlobalStyle`
   *{
     margin: 0;
@@ -9,9 +11,10 @@ const GlobalStyles = createGlobalStyle`
   body{
     font-family: 'Open Sans', sans-serif;
     font-weight: 400;
-    color: #212427;
-    background-color: #fff;
+    color: ${palette.BLACK_TEXT};
+     /* background-color: #f7f7f7; */
   }
 
 `
+
 export default GlobalStyles
