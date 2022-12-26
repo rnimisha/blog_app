@@ -16,6 +16,10 @@ const GlobalStyles = createGlobalStyle`
      /* background-color: #f7f7f7; */
   }
 
+  a{
+    text-decoration: none;
+  }
+
 `
 
 export default GlobalStyles

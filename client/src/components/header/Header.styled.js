@@ -5,22 +5,22 @@ export const Container = styled.div`
     width: 100vw;
     display: flex;
     flex-wrap: wrap;
-    min-height: 100vh;
+    min-height: 90vh;
 `
 
 // banner left--------------------------------------------------
 export const LeftHeader = styled.div`
     width: 30%;
-    min-height: 100vh;
+    min-height: 90vh;
     background-color:  ${palette.GREEN_SHADE1};
     position: relative;
 
 `
 export const MainImage = styled.div`
     position: absolute;
-    width: 100%;
+    width: 94%;
     right: -25%;
-    top: 25%;
+    top: 20%;
     height: 60%;
     background-color: ${palette.GREEN_SHADE2};
 `
@@ -43,7 +43,7 @@ export const UnderLay = styled.div`
 // banner right ---------------------------------------------------
 export const RightHeader = styled.div`
     width: 50%;
-    min-height: 100vh;
+    min-height: 90vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
