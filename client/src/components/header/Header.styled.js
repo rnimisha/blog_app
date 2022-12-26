@@ -50,11 +50,16 @@ export const RightHeader = styled.div`
     margin-left: 20%;
 `
 export const MainTitle = styled.h1`
-    font-size: clamp(1.5rem, 0.1rem + 3.2vw, 3.3rem);
+    font-size: clamp(2.2rem, 0.6444rem + 3.5556vw, 4.2rem);
     font-family: 'Josefin Sans', sans-serif;
     font-weight: 400;
 `
 export const MiniTitle = styled.p`
     font-size: clamp(1.1rem, 0.4rem + 1.6vw, 2rem);
     font-family: 'Josefin Sans', sans-serif;
+`
+export const Paragraph = styled.div`
+    font-size: clamp(0.7rem, 1.2056rem + -1.1556vw, 0.05rem);
+    width: 52%;
+    margin-top: 40px;
 `
