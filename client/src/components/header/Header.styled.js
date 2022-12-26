@@ -14,6 +14,9 @@ export const LeftHeader = styled.div`
     min-height: 90vh;
     background-color:  ${palette.GREEN_SHADE1};
     position: relative;
+    @media (max-width: 860px) {
+        display: none;
+    }
 
 `
 export const MainImage = styled.div`
@@ -23,6 +26,9 @@ export const MainImage = styled.div`
     top: 20%;
     height: 60%;
     background-color: ${palette.GREEN_SHADE2};
+    @media (max-width: 980px) {
+        height: 45%;
+    }
 `
 export const Image = styled.img`
     width: 100%;
@@ -48,6 +54,13 @@ export const RightHeader = styled.div`
     flex-direction: column;
     justify-content: center;
     margin-left: 20%;
+    @media (max-width: 860px) {
+       margin-left: 0;
+       width: 100%;
+       align-items: center;
+
+    }
+ 
 `
 export const MainTitle = styled.h1`
     font-size: clamp(2.2rem, 0.6444rem + 3.5556vw, 4.2rem);
