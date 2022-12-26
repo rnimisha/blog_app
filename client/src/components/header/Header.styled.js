@@ -8,18 +8,14 @@ export const Container = styled.div`
     min-height: 100vh;
 `
 
+// banner left--------------------------------------------------
 export const LeftHeader = styled.div`
     width: 30%;
     min-height: 100vh;
-    background-color: ${palette.GREEN_SHADE1};
+    background-color:  ${palette.GREEN_SHADE1};
     position: relative;
 
 `
-export const RightHeader = styled.div`
-    width: 70%;
-    min-height: 100vh;
-`
-
 export const MainImage = styled.div`
     position: absolute;
     width: 100%;
@@ -42,4 +38,23 @@ export const UnderLay = styled.div`
     right: -15%;
     background-color: ${palette.GREEN_SHADE3};
     z-index: -1;
+`
+
+// banner right ---------------------------------------------------
+export const RightHeader = styled.div`
+    width: 50%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 20%;
+`
+export const MainTitle = styled.h1`
+    font-size: clamp(1.5rem, 0.1rem + 3.2vw, 3.3rem);
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 400;
+`
+export const MiniTitle = styled.p`
+    font-size: clamp(1.1rem, 0.4rem + 1.6vw, 2rem);
+    font-family: 'Josefin Sans', sans-serif;
 `
