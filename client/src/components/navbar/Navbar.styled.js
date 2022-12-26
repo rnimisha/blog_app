@@ -15,6 +15,11 @@ export const LogoContainer = styled.div`
     display: flex;
     align-items: center;
 `
+export const Logo = styled.img`
+    width: 160px;
+    height: 100px;
+    margin-top: 10px;
+`
 export const MenuContainer = styled.div`
     width: 70%;
     display: flex;

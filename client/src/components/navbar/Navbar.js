@@ -5,13 +5,15 @@ import { Link } from 'react-router-dom'
 import { NAVIGATIONS } from '../../constants/navigations'
 
 // styles
-import { LogoContainer, MenuContainer, Nav, Item } from './Navbar.styled'
+import { LogoContainer, MenuContainer, Nav, Item, Logo } from './Navbar.styled'
+
+import LOGOIMG from '../../assets/svgs/result.svg'
 
 const Navbar = () => {
   return (
     <Nav>
         <LogoContainer>
-            logo here
+            <Logo src={LOGOIMG} alt="" />
         </LogoContainer>
         <MenuContainer>
             {
