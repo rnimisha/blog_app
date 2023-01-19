@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 // constants
 import { NAVIGATIONS } from '../../constants/navigations'
@@ -10,9 +10,11 @@ import { LogoContainer, MenuContainer, Nav, Item, Logo } from './Navbar.styled'
 import LOGOIMG from '../../assets/svgs/result.svg'
 
 const Navbar = () => {
+  const location = useLocation()
+
   return (
-    <Nav>
-        <LogoContainer>
+    <Nav green={location.pathname === '/'}>
+        <LogoContainer green={location.pathname === '/'}>
             <Logo src={LOGOIMG} alt="" />
         </LogoContainer>
         <MenuContainer>
@@ -27,6 +29,11 @@ const Navbar = () => {
                   )
                 })
             }
+            <Link to='/Login'>
+                <Item>
+                    Login
+                </Item>
+            </Link>
 
         </MenuContainer>
     </Nav>

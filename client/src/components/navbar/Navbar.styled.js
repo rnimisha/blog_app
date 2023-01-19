@@ -6,11 +6,12 @@ export const Nav = styled.nav`
     height: 10vh;
     background-color: #fff;
     display: flex;
+    box-shadow: ${props => props.green ? 'none' : '0 2px 4px 0 rgba(70,70,70,.1)'};
 
 `
 export const LogoContainer = styled.div`
     width: 30%;
-    background-color:  ${palette.GREEN_SHADE1};
+    background-color: ${props => props.green ? palette.GREEN_SHADE1 : '#ffffff'};
     padding-left: 5%;
     display: flex;
     align-items: center;
