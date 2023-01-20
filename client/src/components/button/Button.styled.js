@@ -10,7 +10,7 @@ export const Button = styled.button`
     position: relative;
     background-color: transparent;
     width: ${(props) => props.width || '250px'};
-    min-height: 70px;
+    min-height: ${(props) => props.height || '70px'};
 
     &:after {
         content: "";

@@ -7,7 +7,7 @@ const InputBox = ({ err, touched, ...props }) => {
     <TextBox {...props}/>
         {err && touched
           ? (
-            <div>{err}</div>
+            <div>{err} </div>
             )
           : null}
     </>

@@ -1,8 +1,8 @@
 import React from 'react'
 import Forms from '../../components/form/Forms'
-import { Center } from './Loginpage.styled'
+import { Center } from '../Loginpage/Loginpage.styled'
 
-const Loginpage = () => {
+const Registerpage = () => {
   const initialValues = {
     username: '',
     email: '',
@@ -18,7 +18,7 @@ const Loginpage = () => {
       body: JSON.stringify(values)
     }
 
-    fetch('http://localhost:3000/auth/login', requestOptions)
+    fetch('http://localhost:3000/auth/register', requestOptions)
       .then((response) => {
         return response.json()
       }).then((data) => {
@@ -30,9 +30,9 @@ const Loginpage = () => {
 
   return (
     <Center>
-    <Forms title='Login' initialValues={initialValues} onSubmit={onSubmit}/>
+        <Forms title='Register' initialValues={initialValues} onSubmit={onSubmit}/>
     </Center>
   )
 }
 
-export default Loginpage
+export default Registerpage

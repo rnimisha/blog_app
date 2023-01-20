@@ -7,6 +7,7 @@ import GlobalStyles from './assets/styles/Globalstyles.styled.js'
 import Homepage from './container/Homepage/Homepage'
 import Loginpage from './container/Loginpage/Loginpage'
 import Navbar from './components/navbar/Navbar.js'
+import Registerpage from './container/Registerpage/Registerpage.js'
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
         <Routes>
             <Route path='/' element={<Homepage/>}/>
             <Route path='/login' element={<Loginpage/>}/>
+            <Route path='/register' element={<Registerpage/>}/>
         </Routes>
        </Router>
     </>

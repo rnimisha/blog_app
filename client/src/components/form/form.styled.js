@@ -28,8 +28,9 @@ export const Container = styled.div`
 export const Title = styled.h1`
     align-self: flex-start;
     color: ${palette.GREEN_SHADE1};
+    font-size: clamp(1.5rem, 0.7222rem + 1.7778vw, 2.5rem);
     width: 100%;
-    margin-top: 10px;
+    margin-top: 20px;
 `
 export const Waves = styled.div`
     align-self:flex-end;

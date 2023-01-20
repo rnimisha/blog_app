@@ -2,32 +2,27 @@ import React from 'react'
 import { Formik } from 'formik'
 
 import InputBox from '../InputBox/InputBox'
+import BoxButton from '../button/BoxButton'
 
 import { FormContainer, Waves, Title, Container, StyledForm } from './form.styled'
 
-const Forms = () => {
-  const initialValues = {
-    username: '',
-    email: '',
-    password: ''
-  }
-  const onSubmit = (values) => {
-    console.log(values)
-  }
+const Forms = ({ title, initialValues, onSubmit }) => {
   return (
     <FormContainer>
         <Container>
-          <Title>Login</Title>
+          <Title>{title}</Title>
           <Formik
             initialValues={initialValues}
             onSubmit={onSubmit}
           >
           {({ errors, touched }) => (
             <StyledForm>
-              <InputBox name='username' placeholder='username' err={errors.username} touched={touched.username}/>
-              <InputBox name='email' placeholder='email' err={errors.email} touched={touched.email}/>
+              {title !== 'Login' &&
+               <InputBox name='email' placeholder='email' err={errors.email} touched={touched.email}/>
+              }
+             <InputBox name='username' placeholder='username' err={errors.username} touched={touched.username}/>
               <InputBox type='password' name='password' placeholder='password' err={errors.password} touched={touched.password}/>
-              <button type="submit">Submit</button>
+              <BoxButton width='200px' height='50px' text='Submit' type ='submit' style={{ marginTop: '15px' }}/>
             </StyledForm>
           )}
           </Formik>
