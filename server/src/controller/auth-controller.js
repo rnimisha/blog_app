@@ -1,4 +1,7 @@
 import bcrypt from 'bcrypt'
+import jwt from 'jsonwebtoken'
+import dotenv from 'dotenv'
+dotenv.config()
 import { connection } from '../db/connection.js'
 
 export const register = (req, res)=>{
@@ -73,9 +76,13 @@ export const login = (req, res) =>{
                 msg : 'Password does not match'
             })
             else{
+                const token = jwt.sign({id: data[0]?.user_id}, `${process.env.SECRET_KEY}`)
+                const {password, ...userdata} = data[0]
                 res.json({
                     sucess : true,
-                    msg : data
+                    data: userdata,
+                    token,
+                    msg : 'Logged in successfylly'
                 })
             }
         });
