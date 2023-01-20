@@ -82,7 +82,7 @@ export const login = (req, res) =>{
                     sucess : true,
                     data: userdata,
                     token,
-                    msg : 'Logged in successfylly'
+                    msg : 'Logged in successfuly'
                 })
             }
         });
