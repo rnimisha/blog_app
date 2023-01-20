@@ -31,3 +31,31 @@ export const register = (req, res)=>{
         })
     })
 }
+
+export const login = (req, res) =>{
+    let {username, password} = req.body
+    username = username.trim().toUpperCase()
+    password = password.trim().toUpperCase()
+
+    const q = 'SELECT * FROM user WHERE UPPER(username) = ?'
+    connection.query(q, [username], (err, data)=>{
+        if(err) return res.json({
+            success : false,
+            msg : err
+        })
+        if(data.length === 0) return res.json({
+            success : false,
+            msg : 'User Not Found'
+        })
+
+        if((data[0].password).toUpperCase() !== password) return res.json({
+            success : false,
+            msg : 'Password does not match'
+        })
+
+        res.json({
+            sucess : true,
+            msg : data
+        })
+    })
+}
