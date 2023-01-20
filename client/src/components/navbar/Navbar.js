@@ -1,4 +1,5 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import { Link, useLocation } from 'react-router-dom'
 
 // constants
@@ -11,6 +12,7 @@ import LOGOIMG from '../../assets/svgs/result.svg'
 
 const Navbar = () => {
   const location = useLocation()
+  const username = useSelector(state => state.user.username)
 
   return (
     <Nav green={location.pathname === '/'}>
@@ -29,11 +31,19 @@ const Navbar = () => {
                   )
                 })
             }
-            <Link to='/Login'>
-                <Item>
-                    Login
-                </Item>
-            </Link>
+            {
+                username.trim().length === 0
+                  ? <Link to='/Login'>
+                        <Item>
+                            Login
+                        </Item>
+                    </Link>
+                  : <Link to='/'>
+                        <Item>
+                            Logout
+                        </Item>
+                    </Link>
+            }
 
         </MenuContainer>
     </Nav>

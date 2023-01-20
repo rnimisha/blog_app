@@ -18,7 +18,7 @@ export const register = (req, res)=>{
         })
 
         if(data.length) return res.status(409).json({
-            sucess : false,
+            success : false,
             msg : 'User already exists'
         })
 
@@ -40,7 +40,7 @@ export const register = (req, res)=>{
                 })
 
                 return res.status(200).json({
-                sucess : true,
+                success : true,
                 msg : 'User created successfully'
             })
             })
@@ -79,9 +79,8 @@ export const login = (req, res) =>{
                 const token = jwt.sign({id: data[0]?.user_id}, `${process.env.SECRET_KEY}`)
                 const {password, ...userdata} = data[0]
                 res.json({
-                    sucess : true,
-                    data: userdata,
-                    token,
+                    success : true,
+                    data: {...userdata, token},
                     msg : 'Logged in successfuly'
                 })
             }

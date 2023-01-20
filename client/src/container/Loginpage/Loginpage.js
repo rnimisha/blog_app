@@ -1,8 +1,25 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { setUserDetails } from '../../features/user/userSlice'
+
+// components
 import Forms from '../../components/form/Forms'
+
+// styles
 import { Center } from './Loginpage.styled'
 
 const Loginpage = () => {
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const username = useSelector(state => state.user.username)
+
+  useEffect(() => {
+    if (username.trim().length > 0) {
+      navigate('/')
+    }
+  }, [])
+
   const initialValues = {
     username: '',
     email: '',
@@ -22,7 +39,10 @@ const Loginpage = () => {
       .then((response) => {
         return response.json()
       }).then((data) => {
-        console.log(data)
+        if (data.success) {
+          dispatch(setUserDetails(data.data))
+          navigate('/')
+        }
       }).catch((error) => {
         console.log('Error : ' + error)
       })
