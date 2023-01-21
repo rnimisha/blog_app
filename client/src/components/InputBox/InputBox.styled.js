@@ -4,7 +4,7 @@ import { Field } from 'formik'
 
 export const TextBox = styled(Field)`
     font-family: inherit;
-    width: 300px;
+    width:  ${props => props.width || '300px'};
     border: 0;
     border-bottom: 2px solid ${palette.GREEN_SHADE2};;
     outline: 0;

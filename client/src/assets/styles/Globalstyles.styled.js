@@ -20,6 +20,21 @@ const GlobalStyles = createGlobalStyle`
     text-decoration: none;
   }
 
+  .ql-container {
+    border-bottom-left-radius: 0.5em;
+    border-bottom-right-radius: 0.5em;
+    background: #fefcfc;
+    height: 300px;
+    border-color: #BAD2C1;
+  }
+
+  .ql-snow.ql-toolbar {
+    display: block;
+    background: #BAD2C1;
+    border-top-left-radius: 0.5em;
+    border-top-right-radius: 0.5em;
+  }
+
 `
 
 export default GlobalStyles

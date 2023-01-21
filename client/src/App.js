@@ -8,6 +8,7 @@ import Homepage from './container/Homepage/Homepage'
 import Loginpage from './container/Loginpage/Loginpage'
 import Navbar from './components/navbar/Navbar.js'
 import Registerpage from './container/Registerpage/Registerpage.js'
+import Addblog from './container/Addblog/Addblog.js'
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
             <Route path='/' element={<Homepage/>}/>
             <Route path='/login' element={<Loginpage/>}/>
             <Route path='/register' element={<Registerpage/>}/>
+            <Route path='/addblog' element={<Addblog/>}/>
         </Routes>
        </Router>
     </>
