@@ -1,23 +1,16 @@
 import React from 'react'
+import useGet from '../../hooks/useGet'
 import { Formik, Field, Form } from 'formik'
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
 import InputBox from '../InputBox/InputBox'
 import { Dropdown, FlexBox, Child } from './editor.styled'
 
-const Editor = () => {
-  const initialValues = {
-    title: '',
-    description: '',
-    image: '',
-    user_id: 1,
-    cat_id: -1
-  }
-  const onSubmit = (values) => {
-    console.log(values)
-  }
+const Editor = ({ initialValues, onSubmit }) => {
+  const { data, loading, error } = useGet('http://localhost:3000/categories')
   return (
     <>
+    { console.log(data, loading, error)}
     <Formik
     initialValues={initialValues}
     onSubmit = {onSubmit}
@@ -29,10 +22,13 @@ const Editor = () => {
                        <InputBox name='title' placeholder='Title' err={errors.title} touched={touched.title} width ='100%' style={{ fontSize: '1.1rem' }}/>
                     </Child>
                     <Child width = '49%'>
-                        <Dropdown as="select" name="cat_id">
-                            <option value="-1" disabled selected> Category....</option>
-                            <option value="1">later</option>
-                            <option value="2">from api</option>
+                        <Dropdown as="select" name="cat_id" defaultValue={'-1'}>
+                            <option value="-1" disabled> Category....</option>
+                            {
+                                data && data.length > 0 && data.map((category, id) => {
+                                  return <option value={category.cat_id} key ={category.cat_id}>{category.name}</option>
+                                })
+                            }
                         </Dropdown>
                     </Child>
                     <Child width = '100%'>
