@@ -1,0 +1,13 @@
+.input-box{
+    width: 100%;
+    color: rgb(86, 84, 84) !important;
+    font-size: 1rem;
+    font-family: inherit;
+    border: 0;
+    border: 1px solid #BAD2C1 !important;
+    border-radius: 5px;
+    outline: 0;
+    padding: 7px 0;
+    background: transparent;
+    padding-left: 10px !important;
+}

@@ -1,16 +1,20 @@
 import React from 'react'
-import useGet from '../../hooks/useGet'
 import { Formik, Field, Form } from 'formik'
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
+import useGet from '../../hooks/useGet'
+
+// components
 import InputBox from '../InputBox/InputBox'
-import { Dropdown, FlexBox, Child } from './editor.styled'
+
+// styles
+import { FlexBox, Child } from './editor.styled'
+import './styles.css'
 
 const Editor = ({ initialValues, onSubmit }) => {
-  const { data, loading, error } = useGet('http://localhost:3000/categories')
+  const { data } = useGet('http://localhost:3000/categories')
   return (
     <>
-    { console.log(data, loading, error)}
     <Formik
     initialValues={initialValues}
     onSubmit = {onSubmit}
@@ -19,18 +23,19 @@ const Editor = ({ initialValues, onSubmit }) => {
             <Form>
                 <FlexBox>
                     <Child width='49%'>
-                       <InputBox name='title' placeholder='Title' err={errors.title} touched={touched.title} width ='100%' style={{ fontSize: '1.1rem' }}/>
+                       <InputBox className = 'input-box' name='title' placeholder='Title' err={errors.title} touched={touched.title} width ='100%' style={{ fontSize: '1.1rem' }}/>
                     </Child>
                     <Child width = '49%'>
-                        <Dropdown as="select" name="cat_id" defaultValue={'-1'}>
-                            <option value="-1" disabled> Category....</option>
+                        <Field as="select" name="cat_id" className = 'input-box'>
+                            <option value={0} disabled> Category....</option>
                             {
                                 data && data.length > 0 && data.map((category, id) => {
                                   return <option value={category.cat_id} key ={category.cat_id}>{category.name}</option>
                                 })
                             }
-                        </Dropdown>
+                        </Field>
                     </Child>
+
                     <Child width = '100%'>
                         <Field name='description'>
                             {({ field }) => <ReactQuill value={field.value} onChange={field.onChange(field.name)} />}
