@@ -1,5 +1,6 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { logOut } from '../../features/user/userSlice'
 import { Link, useLocation } from 'react-router-dom'
 
 // constants
@@ -11,6 +12,7 @@ import { LogoContainer, MenuContainer, Nav, Item, Logo } from './Navbar.styled'
 import LOGOIMG from '../../assets/svgs/result.svg'
 
 const Navbar = () => {
+  const dispatch = useDispatch()
   const location = useLocation()
   const username = useSelector(state => state.user.username)
 
@@ -33,12 +35,17 @@ const Navbar = () => {
             }
             {
                 username.trim().length === 0
-                  ? <Link to='/Login'>
+                  ? <Link
+                   to='/Login'>
                         <Item>
                             Login
                         </Item>
                     </Link>
-                  : <Link to='/'>
+                  : <Link
+                  onClick={() => {
+                    dispatch(logOut())
+                  }}
+                  to='/'>
                         <Item>
                             Logout
                         </Item>

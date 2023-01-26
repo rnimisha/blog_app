@@ -18,10 +18,16 @@ const userSlicer = createSlice({
       state.username = username
       state.email = email
       state.token = token
+    },
+    logOut: (state, _) => {
+      state.user_id = null
+      state.username = ''
+      state.email = ''
+      state.token = ''
     }
   }
 })
 
 export default userSlicer.reducer
 
-export const { setUserDetails } = userSlicer.actions
+export const { setUserDetails, logOut } = userSlicer.actions
