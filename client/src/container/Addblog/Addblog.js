@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React from 'react'
 import { useSelector } from 'react-redux'
+import moment from 'moment'
 // components
 import Editor from '../../components/editor/Editor'
 // styles
@@ -16,12 +17,13 @@ const Addblog = () => {
     cat_id: '0'
   }
 
-  const onSubmit = (values) => {
+  const onSubmit = (values, { resetForm }) => {
     const formData = new FormData()
 
     Object.keys(values).forEach(key => {
       formData.set(key, values[key])
     })
+    formData.set('date', moment(Date.now()).format('YYYY-MM-DD HH:mm:ss'))
 
     axios({
       url: 'http://localhost:3000/blogs',
@@ -33,7 +35,8 @@ const Addblog = () => {
     })
       .then((response) => {
         if (response.data.success) {
-          console.log('done')
+          resetForm()
+          alert('done')
         } else {
           console.log(response.data.msg)
         }

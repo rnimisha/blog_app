@@ -5,7 +5,7 @@ export const NAVIGATIONS = [
   },
   {
     label: 'Blog',
-    path: '/'
+    path: '/blogs'
   },
   {
     label: 'Contact',
