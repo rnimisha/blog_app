@@ -1,3 +1,4 @@
+import axios from 'axios'
 import React from 'react'
 import { useSelector } from 'react-redux'
 // components
@@ -14,29 +15,34 @@ const Addblog = () => {
     user_id: 1,
     cat_id: '0'
   }
-  const onSubmit = (values) => {
-    const requestOptions = {
-      method: 'POST',
-      headers: {
-        authorization: `bearer ${token}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(values)
-    }
 
-    fetch('http://localhost:3000/blogs', requestOptions)
+  const onSubmit = (values) => {
+    const formData = new FormData()
+
+    Object.keys(values).forEach(key => {
+      formData.set(key, values[key])
+    })
+
+    axios({
+      url: 'http://localhost:3000/blogs',
+      method: 'POST',
+      data: formData,
+      headers: {
+        authorization: `bearer ${token}`
+      }
+    })
       .then((response) => {
-        return response.json()
-      }).then((data) => {
-        if (data.success) {
+        if (response.data.success) {
           console.log('done')
         } else {
-          console.log(data.msg)
+          console.log(response.data.msg)
         }
-      }).catch((error) => {
+      })
+      .catch((error) => {
         console.log('Error : ' + error)
       })
   }
+
   return (
     <Container>
         <Editor initialValues={initialValues} onSubmit={onSubmit}/>

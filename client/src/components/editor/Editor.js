@@ -18,8 +18,9 @@ const Editor = ({ initialValues, onSubmit }) => {
     <Formik
     initialValues={initialValues}
     onSubmit = {onSubmit}
+    encType="multipart/form-data"
     >
-        {({ errors, touched }) => (
+        {({ errors, touched, setFieldValue }) => (
             <Form>
                 <FlexBox>
                     <Child width='49%'>
@@ -42,7 +43,15 @@ const Editor = ({ initialValues, onSubmit }) => {
                         </Field>
                     </Child>
                     <Child width='49%'>
-                                        <InputBox type="file" name='image' placeholder='image' err={errors.image} touched={touched.image} style={{ border: 'none' }}/> <br /><br />
+                        <input
+                      type='file'
+                      name='image'
+                      onChange={(e) => {
+                        setFieldValue('image', e.currentTarget.files[0])
+                      }}
+
+                      />
+                        {/* <InputBox type="file" name='image' placeholder='image' err={errors.image} touched={touched.image} style={{ border: 'none' }}/> <br /><br /> */}
                     </Child>
                     <Child width='49%' style={{ display: 'flex', justifyContent: 'flex-end' }}>
                         <button type ='submit'>Publish</button>

@@ -11,6 +11,9 @@ import categoryRoutes from './routes/category-routes.js'
 
 const app = express()
 app.use(cors())
+app.use(bodyParser.urlencoded({
+        extended: false
+}));
 app.use(bodyParser.json())
 
 app.listen(process.env.PORT, () => {

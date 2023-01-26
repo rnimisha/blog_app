@@ -18,20 +18,34 @@ export const getAllBlogs = (req, res)=>{
 }
 
 export const postBlog = (req, res) =>{
-    let {title, description, image, date, user_id, cat_id} = req.body
-  
+    console.log(req.body)
+    let {title, description, date, user_id, cat_id} = req.body
+
+    if(!req.file)
+    {
+         return res.json({
+            success : false,
+            msg : 'blog image missing'
+        })
+    }
+    
+    const image = req.file.filename
     const values = [title, description, date, image, user_id, cat_id]
     const q = 'INSERT INTO blog(`title`, `description`, `date`, `image`, `user_id`, `cat_id`) VALUES(?)'
 
     connection.query(q,[values], (err, data)=>{
-        if(err) return res.json({
-            success : false,
-            msg : err
-        })
+        if(err) {
+            console.log('error : ' + err.sqlMessage)
+            return res.status(500).json({
+                success : false,
+                msg : err
+            })
+        }
 
         return res.json({
             success : true,
             msg : 'Post has been added'
         })
     })
+     
 }
