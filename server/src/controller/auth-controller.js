@@ -76,7 +76,7 @@ export const login = (req, res) =>{
                 msg : 'Password does not match'
             })
             else{
-                const token = jwt.sign({id: data[0]?.user_id}, `${process.env.SECRET_KEY}`)
+                const token = jwt.sign({id: data[0]?.user_id}, `${process.env.SECRETKEY}`)
                 const {password, ...userdata} = data[0]
                 res.json({
                     success : true,
