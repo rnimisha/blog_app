@@ -19,7 +19,9 @@ const Navbar = () => {
   return (
     <Nav green={location.pathname === '/'}>
         <LogoContainer green={location.pathname === '/'}>
+          <Link to='/'>
             <Logo src={LOGOIMG} alt="" />
+          </Link>
         </LogoContainer>
         <MenuContainer>
             {
