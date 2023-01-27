@@ -1,29 +1,33 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { CategoryTitle, Container, HyperLink, ImgContainer, Line, MiniTitle, Title, Image } from './Card.styled'
-import BANNERIMG from '../../assets/images/banner1.png'
-const Card = () => {
+
+const Card = ({ category, title, author, time, id, image }) => {
+  const navitage = useNavigate()
+  const showBlog = () => {
+    navitage(`/blogs/${id}`)
+  }
   return (
     <Container>
-        <ImgContainer>
-            <Image src={BANNERIMG} alt="" />
+        <ImgContainer onClick={showBlog}>
+            <Image src={`${process.env.PUBLIC_URL}/uploads/${image}`} alt="" />
         </ImgContainer>
         <CategoryTitle>
-            Makeup
+            {category}
         </CategoryTitle>
-        <Title>
-            Beauty and Wellness Connection
+        <Title onClick={showBlog}>
+            {title}
         </Title>
         <Line>
             <MiniTitle style={{ borderRight: '1px solid #999', paddingRight: '15px' }}>
-                by Nayeon
+                by {author}
             </MiniTitle>
             <MiniTitle>
-                Jan 23, 2023
+                {time}
             </MiniTitle>
         </Line>
         <Link
-        to='/blogs/id'>
+        to={`/blogs/${id}`}>
             <HyperLink>Read More</HyperLink>
         </Link>
     </Container>

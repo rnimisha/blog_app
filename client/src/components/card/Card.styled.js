@@ -7,12 +7,14 @@ export const Container = styled.div`
     flex-direction: column;
     flex-wrap: wrap;
     gap: 0.5rem;
-    height: 600px;
+    height: 550px;
+    justify-content: space-between;
 `
 export const ImgContainer = styled.div`
     width: 100%;
     height: 70%;
     overflow: hidden;
+    margin-bottom: 1rem;
 `
 
 export const Image = styled.img`
@@ -34,6 +36,8 @@ export const CategoryTitle = styled.h3`
 export const Title = styled.h2`
     font-size: 1.3rem;
     font-weight: normal;
+    min-height: 60px;
+    cursor: pointer;
 `
 export const Line = styled.div`
     display: inline-flex;
