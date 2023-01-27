@@ -16,6 +16,22 @@ export const getAllBlogs = (req, res)=>{
         })
     })
 }
+export const getBlogById = (req, res)=>{
+    const q = 'SELECT b.blog_id, b.title, b.description, b.date, b.image, b.user_id, b.cat_id, c.name FROM blog b JOIN category c ON b.cat_id = c.cat_id WHERE blog_id = ?'
+
+    connection.query(q,[req.params.blogid], (err, data)=>{
+        if(err) return res.json({
+            success : false,
+            msg : err
+        })
+
+        return res.json({
+            success : true,
+            data,
+            msg : 'post fetched'
+        })
+    })
+}
 
 export const postBlog = (req, res) =>{
     console.log(req.body)
