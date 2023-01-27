@@ -1,5 +1,5 @@
 import React from 'react'
-import { getPlainText } from '../../helper/parser'
+import DOMPurify from 'dompurify'
 
 import { Heading, Category, ImageContainer, Detail } from '../../container/IndividualBlog/IndividualBlog.styled'
 import { Line, MiniTitle } from '../card/Card.styled'
@@ -24,8 +24,9 @@ const Description = ({ data }) => {
         <ImageContainer>
             <img src={`${process.env.PUBLIC_URL}/uploads/${data.image}`} style={{ maxWidth: '100%', maxHeight: '100%' }}/>
         </ImageContainer>
-        <Detail>
-            {getPlainText(data.description)}
+        <Detail dangerouslySetInnerHTML={{
+          __html: DOMPurify.sanitize(data.description)
+        }}>
         </Detail>
     </>
   )
