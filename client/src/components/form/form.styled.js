@@ -50,3 +50,8 @@ export const StyledForm = styled(Form)`
     flex-direction: column;
     gap: 2rem;
 `
+
+export const MiniText = styled.p`
+    font-size: 0.9rem;
+    margin-top: 10px;
+`

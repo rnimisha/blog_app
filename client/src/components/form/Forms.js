@@ -4,7 +4,8 @@ import { Formik } from 'formik'
 import InputBox from '../InputBox/InputBox'
 import BoxButton from '../button/BoxButton'
 
-import { FormContainer, Waves, Title, Container, StyledForm } from './form.styled'
+import { FormContainer, Waves, Title, Container, StyledForm, MiniText } from './form.styled'
+import { Link } from 'react-router-dom'
 
 const Forms = ({ title, initialValues, onSubmit }) => {
   return (
@@ -26,6 +27,16 @@ const Forms = ({ title, initialValues, onSubmit }) => {
             </StyledForm>
           )}
           </Formik>
+
+            {title === 'Login'
+              ? <MiniText>
+                Not a memeber yet? <Link to='/register'>Register Now</Link>
+              </MiniText>
+              : <MiniText>
+                Already a member? <Link to='/login'> Login Now</Link>
+              </MiniText>
+            }
+
         </Container>
         <Waves>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
