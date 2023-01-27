@@ -8,7 +8,7 @@ export const Dropdown = styled(Field)`
     font-size: 1rem;
     font-family: inherit;
     border: 0;
-    border-bottom: 2px solid ${palette.GREEN_SHADE2};;
+    border-bottom: 2px solid ${palette.GREEN_SHADE2};
     outline: 0;
     padding: 7px 0;
     background: transparent;
