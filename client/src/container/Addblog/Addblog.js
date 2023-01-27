@@ -1,5 +1,6 @@
+import React, { useEffect } from 'react'
 import axios from 'axios'
-import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import moment from 'moment'
 // components
@@ -8,7 +9,14 @@ import Editor from '../../components/editor/Editor'
 import { Container } from './Addblog.styles'
 
 const Addblog = () => {
-  const token = useSelector(state => state.user.token)
+  const navigate = useNavigate()
+  const { token, username } = useSelector(state => state.user)
+  useEffect(() => {
+    if (username.trim().length === 0) {
+      navigate('/')
+    }
+  }, [])
+
   const initialValues = {
     title: '',
     description: '',

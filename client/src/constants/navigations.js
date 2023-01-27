@@ -10,5 +10,9 @@ export const NAVIGATIONS = [
   {
     label: 'Contact',
     path: '/'
+  },
+  {
+    label: 'Create',
+    path: '/addblog'
   }
 ]
