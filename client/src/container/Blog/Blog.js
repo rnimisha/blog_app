@@ -12,7 +12,7 @@ const Blog = () => {
         <BlogContainer>
         { data && data.length > 0 &&
             data.map((item, id) => {
-              return <Card key ={id} category={item.name} title={item.title} time={item.date} id = {item.blog_id} image={item.image}/>
+              return <Card key ={id} category={item.name} author={item.username} title={item.title} time={item.date} id = {item.blog_id} image={item.image}/>
             })
         }
         </BlogContainer>

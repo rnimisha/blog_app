@@ -1,7 +1,7 @@
 import { connection } from "../db/connection.js"
 
 export const getAllBlogs = (req, res)=>{
-    const q = 'SELECT b.blog_id, b.title, b.description, b.date, b.image, b.user_id, b.cat_id, c.name FROM blog b JOIN category c ON b.cat_id = c.cat_id WHERE 1 = 1'
+    const q = 'SELECT b.blog_id, b.title, b.description, b.date, b.image, b.user_id, b.cat_id, c.name, u.username FROM blog b JOIN category c ON b.cat_id = c.cat_id JOIN user u ON u.user_id = b.user_id WHERE 1 = 1'
 
     connection.query(q, (err, data)=>{
         if(err) return res.json({
@@ -17,7 +17,7 @@ export const getAllBlogs = (req, res)=>{
     })
 }
 export const getBlogById = (req, res)=>{
-    const q = 'SELECT b.blog_id, b.title, b.description, b.date, b.image, b.user_id, b.cat_id, c.name FROM blog b JOIN category c ON b.cat_id = c.cat_id WHERE blog_id = ?'
+    const q = 'SELECT b.blog_id, b.title, b.description, b.date, b.image, b.user_id, b.cat_id, c.name, u.username FROM blog b JOIN category c ON b.cat_id = c.cat_id JOIN user u ON u.user_id = b.user_id WHERE blog_id = ?'
 
     connection.query(q,[req.params.blogid], (err, data)=>{
         if(err) return res.json({

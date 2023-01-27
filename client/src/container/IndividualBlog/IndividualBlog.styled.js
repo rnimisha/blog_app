@@ -33,3 +33,14 @@ export const Category = styled.h2`
     }
     
 `
+export const ImageContainer = styled.div`
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    justify-content: center;
+    height: 500px;
+`
+export const Detail = styled.p`
+    margin: 20px 0;
+    text-align: justify;
+`

@@ -1,27 +1,27 @@
 import React from 'react'
+import { useParams } from 'react-router-dom'
+import useGet from '../../hooks/useGet'
 
 // styles
-import { Line, MiniTitle } from '../../components/card/Card.styled'
 import { Container } from '../Blog/Blog.styled'
-import { Category, Heading } from './IndividualBlog.styled'
+
+// components
+import Description from '../../components/description/Description'
 
 const IndividualBlog = () => {
+  const { blogid } = useParams()
+  const { data, loading } = useGet(`http://localhost:3000/blogs/${blogid}`)
+
   return (
     <Container>
-        <Heading>
-            5 Easy Ways to Incorporate Green Beauty into Your Skincare Routine
-        </Heading>
-        <Category>
-            Makeup
-        </Category>
-       <Line style={{ justifyContent: 'center' }}>
-            <MiniTitle style={{ borderRight: '1px solid #999', paddingRight: '15px' }}>
-                by Nimsiha
-            </MiniTitle>
-            <MiniTitle>
-                12, 30202
-            </MiniTitle>
-        </Line>
+        {
+            loading && <div>
+                loading....
+            </div>
+        }
+        {
+            data && data.length > 0 && <Description data={data[0]}/>
+        }
     </Container>
   )
 }
