@@ -7,10 +7,10 @@ export const NAVIGATIONS = [
     label: 'Blog',
     path: '/blogs'
   },
-  {
-    label: 'Contact',
-    path: '/'
-  },
+  // {
+  //   label: 'Contact',
+  //   path: '/'
+  // },
   {
     label: 'Create',
     path: '/addblog'

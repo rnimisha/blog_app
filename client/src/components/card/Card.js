@@ -1,4 +1,5 @@
 import React from 'react'
+import moment from 'moment'
 import { Link, useNavigate } from 'react-router-dom'
 import { CategoryTitle, Container, HyperLink, ImgContainer, Line, MiniTitle, Title, Image } from './Card.styled'
 
@@ -23,7 +24,7 @@ const Card = ({ category, title, author, time, id, image }) => {
                 by {author}
             </MiniTitle>
             <MiniTitle>
-                {time}
+                {moment(time).fromNow()}
             </MiniTitle>
         </Line>
         <Link

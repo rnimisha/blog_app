@@ -1,5 +1,6 @@
 import React from 'react'
 import DOMPurify from 'dompurify'
+import moment from 'moment'
 
 import { Heading, Category, ImageContainer, Detail } from '../../container/IndividualBlog/IndividualBlog.styled'
 import { Line, MiniTitle } from '../card/Card.styled'
@@ -18,7 +19,7 @@ const Description = ({ data }) => {
                 BY {data.username}
             </MiniTitle>
             <MiniTitle>
-                {data.date}
+                 { moment(data.date).format('DD/MM/YYYY')}
             </MiniTitle>
         </Line>
         <ImageContainer>

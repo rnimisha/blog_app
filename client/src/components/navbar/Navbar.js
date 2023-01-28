@@ -8,6 +8,12 @@ import { NAVIGATIONS } from '../../constants/navigations'
 
 // styles
 import { LogoContainer, MenuContainer, Nav, Item, Logo } from './Navbar.styled'
+import Avatar from '@mui/material/Avatar'
+import Menu from '@mui/material/Menu'
+import MenuItem from '@mui/material/MenuItem'
+import Divider from '@mui/material/Divider'
+import IconButton from '@mui/material/IconButton'
+import Tooltip from '@mui/material/Tooltip'
 
 import LOGOIMG from '../../assets/svgs/result.svg'
 
@@ -15,6 +21,15 @@ const Navbar = () => {
   const dispatch = useDispatch()
   const location = useLocation()
   const username = useSelector(state => state.user.username)
+
+  const [anchorEl, setAnchorEl] = React.useState(null)
+  const open = Boolean(anchorEl)
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget)
+  }
+  const handleClose = () => {
+    setAnchorEl(null)
+  }
 
   return (
     <Nav green={location.pathname === '/'}>
@@ -43,18 +58,43 @@ const Navbar = () => {
                             Login
                         </Item>
                     </Link>
-                  : <Link
-                  onClick={() => {
-                    dispatch(logOut())
-                  }}
-                  to='/'>
-                        <Item>
-                            Logout
-                        </Item>
-                    </Link>
+                  : <Tooltip title="Account settings">
+                      <IconButton
+                        onClick={handleClick}
+                        size="small"
+                        sx={{ ml: 2 }}
+                        aria-controls={open ? 'account-menu' : undefined}
+                        aria-haspopup="true"
+                        aria-expanded={open ? 'true' : undefined}
+                      >
+                        <Avatar sx={{ width: 32, height: 32 }}>{username[0]}</Avatar>
+                      </IconButton>
+                    </Tooltip>
             }
-
         </MenuContainer>
+        <Menu
+          anchorEl={anchorEl}
+          id="account-menu"
+          open={open}
+          onClose={handleClose}
+          onClick={handleClose}
+          transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+          anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+        >
+          <MenuItem>
+            My Profile
+          </MenuItem>
+          <MenuItem>
+            My Blogs
+          </MenuItem>
+          <Divider />
+            <Link onClick={() => {
+              dispatch(logOut())
+            }}
+            to='/'>
+                <MenuItem>Logout</MenuItem>
+            </Link>
+        </Menu>
     </Nav>
   )
 }
