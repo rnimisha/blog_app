@@ -1,9 +1,15 @@
 import { connection } from "../db/connection.js"
 
 export const getAllBlogs = (req, res)=>{
-    const q = 'SELECT b.blog_id, b.title, b.description, b.date, b.image, b.user_id, b.cat_id, c.name, u.username FROM blog b JOIN category c ON b.cat_id = c.cat_id JOIN user u ON u.user_id = b.user_id WHERE 1 = 1'
-
-    connection.query(q, (err, data)=>{
+    let q = 'SELECT b.blog_id, b.title, b.description, b.date, b.image, b.user_id, b.cat_id, c.name, u.username FROM blog b JOIN category c ON b.cat_id = c.cat_id JOIN user u ON u.user_id = b.user_id WHERE 1 = 1'
+    const values = []
+    if(req.query.userid)
+    {
+        q+= ' AND b.user_id = ?'
+        values.push(req.query.userid)
+    }
+  
+    connection.query(q, [values], (err, data)=>{
         if(err) return res.json({
             success : false,
             msg : err

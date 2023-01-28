@@ -3,7 +3,7 @@ import moment from 'moment'
 import { Link, useNavigate } from 'react-router-dom'
 import { CategoryTitle, Container, HyperLink, ImgContainer, Line, MiniTitle, Title, Image } from './Card.styled'
 
-const Card = ({ category, title, author, time, id, image }) => {
+const Card = ({ category, title, author, time, id, image, type }) => {
   const navitage = useNavigate()
   const showBlog = () => {
     navitage(`/blogs/${id}`)
@@ -27,10 +27,27 @@ const Card = ({ category, title, author, time, id, image }) => {
                 {moment(time).fromNow()}
             </MiniTitle>
         </Line>
-        <Link
-        to={`/blogs/${id}`}>
-            <HyperLink>Read More</HyperLink>
-        </Link>
+         {
+            type === 'user'
+              ? <Line>
+                    <Link
+                    to={`/blogs/${id}`}>
+                        <HyperLink>Read More</HyperLink>
+                    </Link>
+                    <Link
+                    to={`/blogs/${id}`}>
+                        <HyperLink>Edit</HyperLink>
+                    </Link>
+                    <Link
+                    to={`/blogs/${id}`}>
+                        <HyperLink>Delete</HyperLink>
+                    </Link>
+               </Line>
+              : <Link
+                to={`/blogs/${id}`}>
+                    <HyperLink>Read More</HyperLink>
+                </Link>
+        }
     </Container>
   )
 }

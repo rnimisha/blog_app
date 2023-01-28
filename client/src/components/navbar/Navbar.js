@@ -84,9 +84,10 @@ const Navbar = () => {
           <MenuItem>
             My Profile
           </MenuItem>
-          <MenuItem>
-            My Blogs
-          </MenuItem>
+          <Link
+            to='/myblogs'>
+                <MenuItem>My Blogs</MenuItem>
+            </Link>
           <Divider />
             <Link onClick={() => {
               dispatch(logOut())

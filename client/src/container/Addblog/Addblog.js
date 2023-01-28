@@ -10,7 +10,8 @@ import { Container } from './Addblog.styles'
 
 const Addblog = () => {
   const navigate = useNavigate()
-  const { token, username } = useSelector(state => state.user)
+  // eslint-disable-next-line camelcase
+  const { token, username, user_id } = useSelector(state => state.user)
   useEffect(() => {
     if (username.trim().length === 0) {
       navigate('/')
@@ -21,7 +22,8 @@ const Addblog = () => {
     title: '',
     description: '',
     image: '',
-    user_id: 1,
+    // eslint-disable-next-line camelcase
+    user_id,
     cat_id: '0'
   }
 
