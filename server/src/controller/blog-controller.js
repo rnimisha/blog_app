@@ -77,7 +77,7 @@ export const deleteBlog = (req, res)=>{
     const blogid = req.params.blogid
     const user_id = req.userid
 
-    const q = 'DELETE FROM blog WHERE blog_id = ? AND user_id = ?'
+    const q = 'DELETE FROM blog WHERE `blog_id` = ? AND `user_id` = ?'
 
     connection.query(q, [blogid, user_id], (err, data)=>{
         if(err) {
@@ -90,6 +90,31 @@ export const deleteBlog = (req, res)=>{
         return res.json({
             success : true,
             msg : 'Post has been deleted'
+        })
+    })
+}
+
+// update a blog by id
+export const updateBlog = (req, res)=>{
+    const user_id = req.userid
+
+    const {title, description, cat_id, blog_id} = req.body
+
+    const q = 'UPDATE blog SET `title`=?, `description` = ?, `cat_id` = ? WHERE `blog_id` = ? AND `user_id` = ?'
+
+    const values = [title, description, cat_id, blog_id, user_id]
+
+    connection.query(q, values, (err, data)=>{
+        if(err) {
+            return res.status(500).json({
+                success : false,
+                msg : err
+            })
+        }
+
+        return res.json({
+            success : true,
+            msg : 'Post has been updated'
         })
     })
 }
