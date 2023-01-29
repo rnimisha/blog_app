@@ -1,6 +1,9 @@
 import styled from 'styled-components'
 import * as palette from '../../constants/palette'
 
+import EditOutlinedIcon from '@mui/icons-material/EditOutlined'
+import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined'
+
 export const Heading = styled.h1`
     font-size: 2rem;
     text-align: center;
@@ -43,4 +46,16 @@ export const ImageContainer = styled.div`
 export const Detail = styled.p`
     margin: 20px 0;
     text-align: justify;
+`
+export const DeleteIcon = styled(DeleteOutlineOutlinedIcon)`
+    &:hover{
+        color : #e85165;
+        cursor: pointer;
+    }
+`
+export const EditIcon = styled(EditOutlinedIcon)`
+    &:hover{
+        color : ${palette.GREEN_SHADE1};
+        cursor: pointer;
+    }
 `

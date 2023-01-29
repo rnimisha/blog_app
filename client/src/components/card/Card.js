@@ -8,6 +8,7 @@ const Card = ({ category, title, author, time, id, image, type }) => {
   const showBlog = () => {
     navitage(`/blogs/${id}`)
   }
+
   return (
     <Container>
         <ImgContainer onClick={showBlog}>
@@ -27,27 +28,10 @@ const Card = ({ category, title, author, time, id, image, type }) => {
                 {moment(time).fromNow()}
             </MiniTitle>
         </Line>
-         {
-            type === 'user'
-              ? <Line>
-                    <Link
-                    to={`/blogs/${id}`}>
-                        <HyperLink>Read More</HyperLink>
-                    </Link>
-                    <Link
-                    to={`/blogs/${id}`}>
-                        <HyperLink>Edit</HyperLink>
-                    </Link>
-                    <Link
-                    to={`/blogs/${id}`}>
-                        <HyperLink>Delete</HyperLink>
-                    </Link>
-               </Line>
-              : <Link
-                to={`/blogs/${id}`}>
-                    <HyperLink>Read More</HyperLink>
-                </Link>
-        }
+        <Link
+        to={`/blogs/${id}`}>
+            <HyperLink>Read More</HyperLink>
+        </Link>
     </Container>
   )
 }

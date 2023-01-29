@@ -4,13 +4,10 @@ import DOMPurify from 'dompurify'
 import moment from 'moment'
 import { useSelector } from 'react-redux'
 
-import { Heading, Category, ImageContainer, Detail } from '../../container/IndividualBlog/IndividualBlog.styled'
+import { Heading, Category, ImageContainer, Detail, DeleteIcon, EditIcon } from '../../container/IndividualBlog/IndividualBlog.styled'
 import { Line, MiniTitle } from '../card/Card.styled'
 
-import EditOutlinedIcon from '@mui/icons-material/EditOutlined'
-import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined'
-
-const Description = ({ data }) => {
+const Description = ({ data, deleteBlog }) => {
   const user_id = useSelector(state => state.user.user_id)
   return (
     <>
@@ -33,10 +30,10 @@ const Description = ({ data }) => {
           user_id === data.user_id &&
           <Line style={{ justifyContent: 'center' }}>
             <MiniTitle style={{ paddingRight: '15px' }}>
-                <EditOutlinedIcon/>
+                <EditIcon/>
             </MiniTitle>
             <MiniTitle>
-                <DeleteOutlineOutlinedIcon/>
+                <DeleteIcon onClick = {() => deleteBlog(data.blog_id)}/>
             </MiniTitle>
         </Line>
         }
