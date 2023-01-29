@@ -22,6 +22,8 @@ export const getAllBlogs = (req, res)=>{
         })
     })
 }
+
+// returns on blog with matching id
 export const getBlogById = (req, res)=>{
     const q = 'SELECT b.blog_id, b.title, b.description, b.date, b.image, b.user_id, b.cat_id, c.name, u.username FROM blog b JOIN category c ON b.cat_id = c.cat_id JOIN user u ON u.user_id = b.user_id WHERE blog_id = ?'
 
@@ -39,8 +41,8 @@ export const getBlogById = (req, res)=>{
     })
 }
 
+// insert new blog
 export const postBlog = (req, res) =>{
-    console.log(req.body)
     let {title, description, date, user_id, cat_id} = req.body
 
     if(!req.file)
@@ -57,7 +59,6 @@ export const postBlog = (req, res) =>{
 
     connection.query(q,[values], (err, data)=>{
         if(err) {
-            console.log('error : ' + err.sqlMessage)
             return res.status(500).json({
                 success : false,
                 msg : err
@@ -69,5 +70,26 @@ export const postBlog = (req, res) =>{
             msg : 'Post has been added'
         })
     })
-     
+}
+
+// delete a blog by id
+export const deleteBlog = (req, res)=>{
+    const blogid = req.params.blogid
+    const user_id = req.userid
+
+    const q = 'DELETE FROM blog WHERE blog_id = ? AND user_id = ?'
+
+    connection.query(q, [blogid, user_id], (err, data)=>{
+        if(err) {
+            return res.status(500).json({
+                success : false,
+                msg : err
+            })
+        }
+
+        return res.json({
+            success : true,
+            msg : 'Post has been deleted'
+        })
+    })
 }

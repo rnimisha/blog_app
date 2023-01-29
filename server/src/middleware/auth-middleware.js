@@ -23,6 +23,7 @@ export const verifyToken = (req, res, next)=>{
                 msg : err
             })
             
+            req.userid = authData.id
             next()
         })
        
