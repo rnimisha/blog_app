@@ -3,12 +3,17 @@ import React from 'react'
 import DOMPurify from 'dompurify'
 import moment from 'moment'
 import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 import { Heading, Category, ImageContainer, Detail, DeleteIcon, EditIcon } from '../../container/IndividualBlog/IndividualBlog.styled'
 import { Line, MiniTitle } from '../card/Card.styled'
 
 const Description = ({ data, deleteBlog }) => {
   const user_id = useSelector(state => state.user.user_id)
+  const navigate = useNavigate()
+  const editBlog = () => {
+    navigate(`/editblog/${data.blog_id}`)
+  }
   return (
     <>
         <Heading>
@@ -30,7 +35,7 @@ const Description = ({ data, deleteBlog }) => {
           user_id === data.user_id &&
           <Line style={{ justifyContent: 'center' }}>
             <MiniTitle style={{ paddingRight: '15px' }}>
-                <EditIcon/>
+                <EditIcon onClick={() => editBlog()}/>
             </MiniTitle>
             <MiniTitle>
                 <DeleteIcon onClick = {() => deleteBlog(data.blog_id)}/>

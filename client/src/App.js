@@ -22,7 +22,8 @@ const App = () => {
             <Route path='/' element={<Homepage/>}/>
             <Route path='/login' element={<Loginpage/>}/>
             <Route path='/register' element={<Registerpage/>}/>
-            <Route path='/addblog' element={<Addblog/>}/>
+            <Route path='/addblog' element={<Addblog type='create'/>}/>
+            <Route path='/editblog/:blogid' element={<Addblog type='edit'/>}/>
             <Route path='/blogs' element={<Blog type="all"/>}/>
             <Route path='/myblogs' element={<Blog type="user"/>}/>
             <Route path='/blogs/:blogid' element={<IndividualBlog/>}/>

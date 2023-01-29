@@ -11,12 +11,14 @@ import InputBox from '../InputBox/InputBox'
 import { FlexBox, Child } from './editor.styled'
 import './styles.css'
 
-const Editor = ({ initialValues, onSubmit }) => {
+const Editor = ({ initial, onSubmit, type }) => {
   const { data } = useGet('http://localhost:3000/categories')
   return (
     <>
+    {
+    Object.keys(initial).length > 0 &&
     <Formik
-    initialValues={initialValues}
+    initialValues={initial}
     onSubmit = {onSubmit}
     encType="multipart/form-data"
     >
@@ -42,24 +44,25 @@ const Editor = ({ initialValues, onSubmit }) => {
                             {({ field }) => <ReactQuill value={field.value} onChange={field.onChange(field.name)} />}
                         </Field>
                     </Child>
-                    <Child width='49%'>
-                        <input
-                      type='file'
-                      name='image'
-                      onChange={(e) => {
-                        setFieldValue('image', e.currentTarget.files[0])
-                      }}
-
-                      />
+                    <Child width='49%'>{
+                        type !== 'edit' && <input
+                        type='file'
+                        name='image'
+                        onChange={(e) => {
+                          setFieldValue('image', e.currentTarget.files[0])
+                        }}
+                        />
+                    }
                         {/* <InputBox type="file" name='image' placeholder='image' err={errors.image} touched={touched.image} style={{ border: 'none' }}/> <br /><br /> */}
                     </Child>
                     <Child width='49%' style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                        <button type ='submit'>Publish</button>
+                        <button type ='submit'>{type === 'edit' ? 'Update' : 'Publish'}</button>
                     </Child>
                 </FlexBox>
             </Form>
         )}
     </Formik>
+}
     </>
   )
 }

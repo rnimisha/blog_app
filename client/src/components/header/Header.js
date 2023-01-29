@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { useNavigate } from 'react-router-dom'
 // styles
 import { Container, LeftHeader, MainImage, RightHeader, Image, UnderLay, MainTitle, MiniTitle, Paragraph } from './Header.styled'
 
@@ -10,6 +10,11 @@ import BANNERIMG from '../../assets/images/banner1.png'
 import BoxButton from '../button/BoxButton'
 
 const Header = () => {
+  const navigate = useNavigate()
+
+  const goToBlogs = () => {
+    navigate('/blogs')
+  }
   return (
     <>
         <Container>
@@ -27,6 +32,7 @@ const Header = () => {
                         <span>&nbsp;</span>an open diary
                     </MiniTitle>
                     <BoxButton
+                        action={() => goToBlogs()}
                         width ='280px'
                         text='Discover now'/>
                     <Paragraph>
