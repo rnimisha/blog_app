@@ -17,10 +17,26 @@ export const register = (req, res)=>{
             msg : err
         })
 
-        if(data.length) return res.status(409).json({
-            success : false,
-            msg : 'User already exists'
-        })
+        // check if email or user name is already registered
+        if(data.length)
+        {
+            const dupUsernames = data.filter((item, id)=>{
+                return item?.username.trim().toUpperCase() === username
+            })
+            const dupEmail = data.filter((item, id)=>{
+                return item?.email.trim().toUpperCase() === email
+            })
+
+            const error = {}
+            dupEmail.length > 0 && (error['email'] = 'Email already registered')
+            dupUsernames.length > 0 && (error['username'] = 'Username already registered')
+
+            return res.status(409).json({
+                success : false,
+                msg : 'User already exists',
+                error
+            })
+        } 
 
         //------------ PASSWORD HASH-------------
         const saltRounds = 10

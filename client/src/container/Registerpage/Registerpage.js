@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux'
 
 import Forms from '../../components/form/Forms'
 import { Center } from '../Loginpage/Loginpage.styled'
+import REGISTER_VALIDATION_SCHEMA from '../../validations/register-validation-schema'
 
 const Registerpage = () => {
   const navigate = useNavigate()
@@ -22,7 +23,7 @@ const Registerpage = () => {
     password: ''
   }
 
-  const onSubmit = (values) => {
+  const onSubmit = (values, { setErrors, resetForm }) => {
     const requestOptions = {
       method: 'POST',
       headers: {
@@ -36,6 +37,12 @@ const Registerpage = () => {
         return response.json()
       }).then((data) => {
         console.log(data)
+        if (data.success) {
+          resetForm()
+          alert('Registered')
+        } else {
+          setErrors(data.error)
+        }
       }).catch((error) => {
         console.log('Error : ' + error)
       })
@@ -43,7 +50,7 @@ const Registerpage = () => {
 
   return (
     <Center>
-        <Forms title='Register' initialValues={initialValues} onSubmit={onSubmit}/>
+        <Forms title='Register' initialValues={initialValues} onSubmit={onSubmit} schema={REGISTER_VALIDATION_SCHEMA}/>
     </Center>
   )
 }
