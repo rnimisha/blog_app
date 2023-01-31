@@ -23,3 +23,18 @@ export const Child = styled.div`
 
     width: ${props => props.width || '100%'};
 `
+export const MiniButton = styled.button`
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid ${palette.GREEN_SHADE2};
+    background-color: ${palette.GREEN_SHADE2};
+    font-size : 1rem;
+
+    &:hover{
+        background-color: ${palette.GREEN_SHADE4};
+    }
+`

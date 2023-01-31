@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef, useState } from 'react'
 import { Formik, Field, Form } from 'formik'
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
@@ -8,11 +8,14 @@ import useGet from '../../hooks/useGet'
 import InputBox from '../InputBox/InputBox'
 
 // styles
-import { FlexBox, Child } from './editor.styled'
+import { FlexBox, Child, MiniButton } from './editor.styled'
 import './styles.css'
+import CloudUploadOutlinedIcon from '@mui/icons-material/CloudUploadOutlined'
 
 const Editor = ({ initial, onSubmit, type }) => {
   const { data } = useGet('http://localhost:3000/categories')
+  const [fileName, setFileName] = useState(initial?.image || '')
+  const ref = useRef()
   return (
     <>
     {
@@ -45,18 +48,26 @@ const Editor = ({ initial, onSubmit, type }) => {
                         </Field>
                     </Child>
                     <Child width='49%'>{
-                        type !== 'edit' && <input
+                        type !== 'edit' && <>
+                        <input
+                        style ={{ display: 'none' }}
+                        ref = {ref}
                         type='file'
                         name='image'
                         onChange={(e) => {
                           setFieldValue('image', e.currentTarget.files[0])
+                          setFileName(e.currentTarget?.files[0])
                         }}
                         />
+                        <MiniButton onClick={() => { ref.current.click() }}> <CloudUploadOutlinedIcon/> Upload Image</MiniButton>
+                        <div style={{ marginTop: '10px' }}>
+                            <span>{fileName?.name && <img style={{ width: '100px', maxHeight: '100px' }} src={URL.createObjectURL(fileName)}/>}</span>
+                        </div>
+                        </>
                     }
-                        {/* <InputBox type="file" name='image' placeholder='image' err={errors.image} touched={touched.image} style={{ border: 'none' }}/> <br /><br /> */}
                     </Child>
                     <Child width='49%' style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                        <button type ='submit'>{type === 'edit' ? 'Update' : 'Publish'}</button>
+                        <MiniButton type ='submit' style={{ padding: '20px 40px' }}>{type === 'edit' ? 'Update' : 'Publish'}</MiniButton>
                     </Child>
                 </FlexBox>
             </Form>

@@ -2,19 +2,30 @@ import styled from 'styled-components'
 import * as palette from '../../constants/palette'
 
 export const Container = styled.div`
-    width: 32%;
+    width: 30%;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     gap: 0.5rem;
-    height: 550px;
+    min-height: 550px;
     justify-content: space-between;
+    @media (max-width: 1080px) {
+        width: 45%;
+    }
+    @media (max-width: 680px) {
+        width: 95%;
+        height: auto;
+        min-height: auto;
+    }
 `
 export const ImgContainer = styled.div`
     width: 100%;
-    height: 70%;
+    height: 350px;
     overflow: hidden;
     margin-bottom: 1rem;
+    @media (max-width: 680px) {
+        height: auto;
+    }
 `
 
 export const Image = styled.img`
