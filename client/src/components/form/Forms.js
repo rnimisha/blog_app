@@ -7,13 +7,14 @@ import BoxButton from '../button/BoxButton'
 import { FormContainer, Waves, Title, Container, StyledForm, MiniText } from './form.styled'
 import { Link } from 'react-router-dom'
 
-const Forms = ({ title, initialValues, onSubmit }) => {
+const Forms = ({ title, initialValues, onSubmit, schema }) => {
   return (
     <FormContainer>
         <Container>
           <Title>{title}</Title>
           <Formik
             initialValues={initialValues}
+            validationSchema = {schema}
             onSubmit={onSubmit}
           >
           {({ errors, touched }) => (

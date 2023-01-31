@@ -8,6 +8,7 @@ import Forms from '../../components/form/Forms'
 
 // styles
 import { Center } from './Loginpage.styled'
+import SignupSchema from '../../validations/login-validation-schema'
 
 const Loginpage = () => {
   const dispatch = useDispatch()
@@ -50,7 +51,7 @@ const Loginpage = () => {
 
   return (
     <Center>
-    <Forms title='Login' initialValues={initialValues} onSubmit={onSubmit}/>
+    <Forms title='Login' initialValues={initialValues} onSubmit={onSubmit} schema={SignupSchema}/>
     </Center>
   )
 }

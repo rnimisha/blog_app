@@ -8,10 +8,16 @@ export const TextBox = styled(Field)`
     border: 0;
     border-bottom: 2px solid ${palette.GREEN_SHADE2};;
     outline: 0;
-    padding: 7px 0;
+    padding-top: 7px;
     background: transparent;
 
     @media (max-width: 980px) {
         width: 90%;
     }
+`
+export const Error = styled.div`
+    font-size: 0.8rem;
+    color: #D8000C;
+    padding: 0 ;
+    margin-top: 4px ;
 `

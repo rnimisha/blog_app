@@ -1,16 +1,16 @@
 import React from 'react'
-import { TextBox } from './InputBox.styled'
+import { TextBox, Error } from './InputBox.styled'
 
 const InputBox = ({ err, touched, ...props }) => {
   return (
-    <>
+    <div style={{ width: '100%' }}>
     <TextBox {...props}/>
         {err && touched
           ? (
-            <div>{err} </div>
+            <Error>{err} </Error>
             )
           : null}
-    </>
+    </div>
   )
 }
 
