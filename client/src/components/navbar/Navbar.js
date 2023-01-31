@@ -7,10 +7,9 @@ import { Link, useLocation } from 'react-router-dom'
 import { NAVIGATIONS } from '../../constants/navigations'
 
 // styles
-import { LogoContainer, MenuContainer, Nav, Item, Logo } from './Navbar.styled'
+import { LogoContainer, MenuContainer, Nav, Item, Logo, InnerItem } from './Navbar.styled'
 import Avatar from '@mui/material/Avatar'
 import Menu from '@mui/material/Menu'
-import MenuItem from '@mui/material/MenuItem'
 import Divider from '@mui/material/Divider'
 import IconButton from '@mui/material/IconButton'
 import Tooltip from '@mui/material/Tooltip'
@@ -81,19 +80,19 @@ const Navbar = () => {
           transformOrigin={{ horizontal: 'right', vertical: 'top' }}
           anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
         >
-          <MenuItem>
+          {/* <MenuItem>
             My Profile
-          </MenuItem>
+          </MenuItem> */}
           <Link
             to='/myblogs'>
-                <MenuItem>My Blogs</MenuItem>
+                <InnerItem>My Blogs</InnerItem>
             </Link>
           <Divider />
             <Link onClick={() => {
               dispatch(logOut())
             }}
             to='/'>
-                <MenuItem>Logout</MenuItem>
+                <InnerItem>Logout</InnerItem>
             </Link>
         </Menu>
     </Nav>

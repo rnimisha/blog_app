@@ -18,6 +18,7 @@ export const FlexBox = styled.div`
     display:  flex;
     gap: 1rem;
     flex-wrap: wrap;
+    margin-top: 20px;
     justify-content: space-between;
 `
 export const Child = styled.div`

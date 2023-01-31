@@ -1,3 +1,4 @@
+import { MenuItem } from '@mui/material'
 import styled from 'styled-components'
 import * as palette from '../../constants/palette'
 
@@ -70,5 +71,12 @@ export const Item = styled.span`
         visibility: visible;
         height: 200%;
         width: 140%;
+    }
+`
+export const InnerItem = styled(MenuItem)`
+    color : #000 !important;
+    padding: 8px 30px !important;
+    &:hover{
+        color : ${palette.GREEN_SHADE1};
     }
 `

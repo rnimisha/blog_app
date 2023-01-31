@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux'
 import moment from 'moment'
 // components
 import Editor from '../../components/editor/Editor'
+import Title from '../../components/title/Title'
 // styles
 import { Container } from './Addblog.styles'
 
@@ -74,6 +75,7 @@ const Addblog = ({ type }) => {
 
   return (
     <Container>
+      <Title text={ type === 'edit' ? 'Edit Blog' : 'Create Blog'}/>
       {
 
         type !== 'edit'
