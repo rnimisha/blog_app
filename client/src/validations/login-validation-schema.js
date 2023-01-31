@@ -1,6 +1,6 @@
 import * as Yup from 'yup'
 
-export const SignupSchema = Yup.object().shape({
+export const LoginValidationSchema = Yup.object().shape({
   username: Yup.string()
     .matches(
       /^[a-zA-Z][a-zA-Z0-9_]{6,50}$/,
@@ -11,4 +11,4 @@ export const SignupSchema = Yup.object().shape({
     .required('Password is required')
 })
 
-export default SignupSchema
+export default LoginValidationSchema

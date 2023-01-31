@@ -8,7 +8,7 @@ import Forms from '../../components/form/Forms'
 
 // styles
 import { Center } from './Loginpage.styled'
-import SignupSchema from '../../validations/login-validation-schema'
+import LoginValidationSchema from '../../validations/login-validation-schema'
 
 const Loginpage = () => {
   const dispatch = useDispatch()
@@ -27,7 +27,7 @@ const Loginpage = () => {
     password: ''
   }
 
-  const onSubmit = (values) => {
+  const onSubmit = (values, { setErrors }) => {
     const requestOptions = {
       method: 'POST',
       headers: {
@@ -43,6 +43,8 @@ const Loginpage = () => {
         if (data.success) {
           dispatch(setUserDetails(data.data))
           navigate('/')
+        } else {
+          setErrors(data.error)
         }
       }).catch((error) => {
         console.log('Error : ' + error)
@@ -51,7 +53,7 @@ const Loginpage = () => {
 
   return (
     <Center>
-    <Forms title='Login' initialValues={initialValues} onSubmit={onSubmit} schema={SignupSchema}/>
+    <Forms title='Login' initialValues={initialValues} onSubmit={onSubmit} schema={LoginValidationSchema}/>
     </Center>
   )
 }

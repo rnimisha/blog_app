@@ -77,7 +77,10 @@ export const login = (req, res) =>{
         //--- if user exists or not
         if(data.length === 0) return res.json({
             success : false,
-            msg : 'User Not Found'
+            msg : 'User Not Found',
+            error:{
+                username : 'User not registered yet'
+            }
         })
 
         // check hashed password match
@@ -89,7 +92,10 @@ export const login = (req, res) =>{
 
             if(!result) return res.json({
                 success : false,
-                msg : 'Password does not match'
+                msg : 'Password does not match',
+                error : {
+                    password : 'Password does not match'
+                }
             })
             else{
                 const token = jwt.sign({id: data[0]?.user_id}, `${process.env.SECRETKEY}`)

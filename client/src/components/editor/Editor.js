@@ -11,6 +11,8 @@ import InputBox from '../InputBox/InputBox'
 import { FlexBox, Child, MiniButton } from './editor.styled'
 import './styles.css'
 import CloudUploadOutlinedIcon from '@mui/icons-material/CloudUploadOutlined'
+import BlogValidationSchema from '../../validations/blog-validation-schema'
+import { Error } from '../InputBox/InputBox.styled'
 
 const Editor = ({ initial, onSubmit, type }) => {
   const { data } = useGet('http://localhost:3000/categories')
@@ -23,6 +25,7 @@ const Editor = ({ initial, onSubmit, type }) => {
     <Formik
     initialValues={initial}
     onSubmit = {onSubmit}
+    validationSchema= {BlogValidationSchema}
     encType="multipart/form-data"
     >
         {({ errors, touched, setFieldValue }) => (
@@ -40,12 +43,25 @@ const Editor = ({ initial, onSubmit, type }) => {
                                 })
                             }
                         </Field>
+                        {errors.cat_id && touched.cat_id
+                          ? (
+                            <Error>{errors.cat_id} </Error>
+                            )
+                          : null}
                     </Child>
 
                     <Child width = '100%'>
                         <Field name='description'>
                             {({ field }) => <ReactQuill value={field.value} onChange={field.onChange(field.name)} />}
                         </Field>
+                        {console.log(errors)}
+                    </Child>
+                    <Child width = '100%'>
+                        {errors.description && touched.description
+                          ? (
+                            <Error>{errors.description} </Error>
+                            )
+                          : null}
                     </Child>
                     <Child width='46%'>{
                         type !== 'edit' && <>

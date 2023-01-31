@@ -26,7 +26,7 @@ const Addblog = ({ type }) => {
 
   useEffect(() => {
     if (username.trim().length === 0) {
-      navigate('/')
+      navigate('/login')
     }
     if (!loading && type === 'edit' && data !== null) {
       const { blog_id, title, description, image, user_id, cat_id } = data[0]
