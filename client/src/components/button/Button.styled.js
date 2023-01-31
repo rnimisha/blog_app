@@ -28,4 +28,9 @@ export const Button = styled.button`
         top: 0px;
         left: 0px;
     }
+
+    @media (max-width: 400px) {
+        width: 80%;
+        font-size: clamp(1rem, 0.6111rem + 0.8889vw, 1rem);
+    }
 `

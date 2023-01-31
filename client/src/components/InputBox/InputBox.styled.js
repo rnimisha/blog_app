@@ -10,4 +10,8 @@ export const TextBox = styled(Field)`
     outline: 0;
     padding: 7px 0;
     background: transparent;
+
+    @media (max-width: 980px) {
+        width: 90%;
+    }
 `

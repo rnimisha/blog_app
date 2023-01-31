@@ -18,10 +18,13 @@ export const FlexBox = styled.div`
     display:  flex;
     gap: 1rem;
     flex-wrap: wrap;
+    justify-content: space-between;
 `
 export const Child = styled.div`
-
     width: ${props => props.width || '100%'};
+    @media (max-width: 980px) {
+        width: 100%;
+    }
 `
 export const MiniButton = styled.button`
     height: 40px;

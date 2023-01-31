@@ -5,4 +5,9 @@ export const Container = styled.div`
     margin-left: 10%;
     padding: 30px;
     margin-top: 50px;
+
+    @media (max-width: 980px) {
+        width: 90%;
+        margin-left: 5%;
+    }
 `

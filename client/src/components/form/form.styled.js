@@ -16,6 +16,10 @@ export const FormContainer = styled.div`
     position: relative;
     flex-direction: column;
     justify-content: space-between;
+
+     @media (max-width: 980px) {
+        width: 80%;
+    }
 `
 export const Container = styled.div`
     width: 100%;

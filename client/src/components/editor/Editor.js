@@ -28,10 +28,10 @@ const Editor = ({ initial, onSubmit, type }) => {
         {({ errors, touched, setFieldValue }) => (
             <Form>
                 <FlexBox>
-                    <Child width='49%'>
+                    <Child width='46%'>
                        <InputBox className = 'input-box' name='title' placeholder='Title' err={errors.title} touched={touched.title} width ='100%' style={{ fontSize: '1.1rem' }}/>
                     </Child>
-                    <Child width = '49%'>
+                    <Child width = '46%'>
                         <Field as="select" name="cat_id" className = 'input-box'>
                             <option value={0} disabled> Category....</option>
                             {
@@ -47,7 +47,7 @@ const Editor = ({ initial, onSubmit, type }) => {
                             {({ field }) => <ReactQuill value={field.value} onChange={field.onChange(field.name)} />}
                         </Field>
                     </Child>
-                    <Child width='49%'>{
+                    <Child width='46%'>{
                         type !== 'edit' && <>
                         <input
                         style ={{ display: 'none' }}
@@ -66,7 +66,7 @@ const Editor = ({ initial, onSubmit, type }) => {
                         </>
                     }
                     </Child>
-                    <Child width='49%' style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                    <Child width='46%' style={{ display: 'flex', justifyContent: 'flex-end' }}>
                         <MiniButton type ='submit' style={{ padding: '20px 40px' }}>{type === 'edit' ? 'Update' : 'Publish'}</MiniButton>
                     </Child>
                 </FlexBox>
